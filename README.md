@@ -65,4 +65,22 @@ hydra -L users.txt -P pass.txt < ip-адрес > ssh
 
 <img width="1920" height="1080" alt="Снимок экрана (1252)" src="https://github.com/user-attachments/assets/8599946e-cf75-4445-a6ad-1da3bf2d5afa" />
 
+### `` атака перебором паролей SSH и проверка работы Fail2Ban и Suricata ``
 
+<img width="1920" height="1080" alt="Снимок экрана (1253)" src="https://github.com/user-attachments/assets/f309b7e1-21c8-46bf-a59c-6c3e9fb58bdc" />
+
+<img width="1920" height="1080" alt="Снимок экрана (1254)" src="https://github.com/user-attachments/assets/c51c35f1-b97f-499f-8b8d-15cb20782ebd" />
+
+<img width="1920" height="1080" alt="Снимок экрана (1255)" src="https://github.com/user-attachments/assets/99e2d7d6-8e14-41cd-8caf-55b57ef357a0" />
+
+## Результаты:
+
+Fail2Ban успешно заблокировал IP-адрес атакующей машины (192.168.0.118).
+В логах Fail2Ban были обнаружены записи о блокировке IP-адреса.
+Suricata обнаружила трафик, похожий на сканер SSH, и зарегистрировала события ET SCAN Potential SSH Scanи SURICATA STREAM excessive retransmissions.
+
+## Вывод:
+
+Fail2Ban эффективно защищает от атак перебором паролей SSH.
+Suricata может обнаружить контакты кабеля SSH, но для более точного обнаружения атаки при переборе паролей могут применяться более специализированные правила.
+Настройка верхних инструментов (Fail2Ban и Suricata) обеспечивает многоуровневую защиту от атак. Fail2Ban блокирует IP-адреса, а Suricata предоставляет информацию о характере атаки.
